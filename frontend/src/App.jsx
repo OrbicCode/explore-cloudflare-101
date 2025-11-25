@@ -25,7 +25,13 @@ function App() {
         },
         body: JSON.stringify(messages),
       });
+
       const apiResponse = await response.json();
+
+      if (!apiResponse.ok) {
+        throw new Error(`Worker Error: ${apiResponse.error}`);
+      }
+
       setApiResponse(apiResponse);
     } catch (error) {
       console.error(error.message);
