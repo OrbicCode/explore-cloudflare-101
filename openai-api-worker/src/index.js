@@ -21,14 +21,14 @@ export default {
 			const messages = await request.json();
 			const chatCompletions = await openai.chat.completions.create({
 				model: 'gpt-5-nano',
-				messages,
+				messages: messages,
 			});
 
 			const response = chatCompletions.choices[0].message;
 
 			return new Response(JSON.stringify(response), { headers: corsHeaders });
 		} catch (error) {
-			return new Response(error, { headers: corsHeaders });
+			return new Response(JSON.stringify({ error: error }), { headers: corsHeaders });
 		}
 	},
 };

@@ -28,7 +28,7 @@ function App() {
       const apiResponse = await response.json();
       setApiResponse(apiResponse);
     } catch (error) {
-      console.error(error);
+      console.error(error.message);
     }
   }
 
