@@ -16,16 +16,11 @@ export default {
 			apiKey: env.OPENAI_API_KEY,
 		});
 
-		const messages = [
-			{
-				role: 'user',
-				content: 'Which way to Mordor?',
-			},
-		];
 		try {
+			const messages = await request.json();
 			const chatCompletions = await openai.chat.completions.create({
 				model: 'gpt-5-nano',
-				messages: messages,
+				messages,
 			});
 
 			const response = chatCompletions.choices[0].message;
