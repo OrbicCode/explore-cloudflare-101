@@ -26,11 +26,11 @@ function App() {
         body: JSON.stringify(messages),
       });
 
-      const apiResponse = await response.json();
-
-      if (!apiResponse.ok) {
-        throw new Error(`Worker Error: ${apiResponse.error}`);
+      if (!response.ok) {
+        throw new Error(`Worker Error: ${response.error}`);
       }
+
+      const apiResponse = await response.json();
 
       setApiResponse(apiResponse);
     } catch (error) {
