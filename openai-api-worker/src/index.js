@@ -28,7 +28,7 @@ export default {
 
 			return new Response(JSON.stringify(response), { headers: corsHeaders });
 		} catch (error) {
-			return new Response(JSON.stringify({ error: error }), { headers: corsHeaders });
+			return new Response(JSON.stringify({ error: error.message }), { headers: corsHeaders });
 		}
 	},
 };
