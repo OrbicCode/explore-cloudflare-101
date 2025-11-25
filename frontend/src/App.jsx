@@ -5,8 +5,15 @@ function App() {
   const [message, setMessage] = useState(null);
   async function handleClick() {
     try {
+      console.log('fetching');
       const url = 'https://openai-api-worker.orbiccode.workers.dev';
-      const response = await fetch(url);
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: '',
+      });
       const message = await response.json();
       setMessage(message);
     } catch (error) {
@@ -16,7 +23,7 @@ function App() {
 
   return (
     <main>
-      <button onClick={handleClick}></button>
+      <button onClick={handleClick}>fetch data</button>
       <div>
         <p>{message && message.content}</p>
       </div>
