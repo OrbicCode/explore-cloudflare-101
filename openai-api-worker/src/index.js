@@ -1,7 +1,7 @@
 import Openai from 'openai';
 
 const corsHeaders = {
-	'Access-Control-Allow-Origin': '*',
+	'Access-Control-Allow-Origin': 'http://localhost:5173',
 	'Access-Control-Allow-Methods': 'POST, OPTIONS',
 	'Access-Control-Allow-Headers': 'Content-Type',
 };
