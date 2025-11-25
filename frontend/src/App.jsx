@@ -2,7 +2,18 @@ import { useState } from 'react';
 import './App.css';
 
 function App() {
-  const [message, setMessage] = useState(null);
+  const [apiResponse, setApiResponse] = useState(null);
+
+  const messages = [
+    {
+      role: 'system',
+      content: 'You are an experienced guide in Middle-Earth',
+    },
+    {
+      role: 'user',
+      content: 'How can I get from Rivendell to Mordor?',
+    },
+  ];
   async function handleClick() {
     try {
       console.log('fetching');
@@ -12,10 +23,10 @@ function App() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: '',
+        body: JSON.stringify(messages),
       });
-      const message = await response.json();
-      setMessage(message);
+      const apiResponse = await response.json();
+      setApiResponse(apiResponse);
     } catch (error) {
       console.error(error);
     }
@@ -25,7 +36,7 @@ function App() {
     <main>
       <button onClick={handleClick}>fetch data</button>
       <div>
-        <p>{message && message.content}</p>
+        <p>{apiResponse && apiResponse.content}</p>
       </div>
     </main>
   );
